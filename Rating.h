@@ -13,9 +13,9 @@ public:
     float GetDeviation(void);
 
 private:
-    float rating;
-    float deviation;
-    float volatility;
+    float m_Rating;
+    float m_Deviation;
+    float m_Volatility;
 };
 
 #endif // __Rating_H

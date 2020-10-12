@@ -6,20 +6,20 @@ Rating::Rating()
 
 void Rating::SetRating(float r)
 {
-    rating = (r - 1500.0f) / 173.7178f;
+    m_Rating = (r - 1500.0f) / 173.7178f;
 }
 
 float Rating::GetRating(void)
 {
-    return rating * 173.7178f + 1500.0f;
+    return m_Rating * 173.7178f + 1500.0f;
 }
 
 void Rating::SetDeviation(float rd)
 {
-    deviation = rd / 173.7178f;
+    m_Deviation = rd / 173.7178f;
 }
 
 float Rating::GetDeviation(void)
 {
-    return deviation * 173.7178f;
+    return m_Deviation * 173.7178f;
 }
