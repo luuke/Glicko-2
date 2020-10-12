@@ -1,7 +1,10 @@
 #include "Rating.h"
 
-Rating::Rating()
+Rating::Rating(float rating, float deviation, float volatility)
 {
+    SetRating(rating);
+    SetDeviation(deviation);
+    m_Volatility = volatility;
 }
 
 void Rating::SetRating(float r)

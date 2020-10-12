@@ -4,7 +4,7 @@
 class Rating
 {
 public:
-    Rating();
+    Rating(float rating = 1500.0f, float deviation = 350.0f, float volatility = 0.06f);
 
     void SetRating(float r);
     float GetRating(void);
