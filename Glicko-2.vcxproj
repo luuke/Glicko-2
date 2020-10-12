@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="Glicko2.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Match.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rating.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Glicko2.h" />
+    <ClInclude Include="Match.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rating.h" />
   </ItemGroup>
