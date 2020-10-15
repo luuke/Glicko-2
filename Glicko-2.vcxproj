@@ -143,13 +143,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Match.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Rating.cpp" />
+    <ClCompile Include="GlickoRating.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Glicko2.h" />
     <ClInclude Include="Match.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Rating.h" />
+    <ClInclude Include="GlickoRating.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
