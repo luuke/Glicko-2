@@ -1,10 +1,10 @@
-#ifndef __Rating_H
-#define __Rating_H
+#ifndef __GlickoRating_H
+#define __GlickoRating_H
 
-class Rating
+class GlickoRating
 {
 public:
-    Rating(float rating = 1500.0f, float deviation = 350.0f, float volatility = 0.06f);
+    GlickoRating(float rating = 1500.0f, float deviation = 350.0f, float volatility = 0.06f);
 
     void SetRating(float r);
     float GetRating(void);
@@ -18,5 +18,5 @@ private:
     float m_Volatility;
 };
 
-#endif // __Rating_H
+#endif // __GlickoRating_H
 
