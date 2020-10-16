@@ -3,14 +3,14 @@
 
 #include <stdint.h>
 #include <string>
-#include "Rating.h"
+#include "GlickoRating.h"
 
 class Player
 {
 public:
     Player(uint32_t id);
 
-    Rating m_Rating;
+    GlickoRating m_Rating;
 
     std::string GetName(void);
 private:
