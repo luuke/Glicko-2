@@ -24,13 +24,17 @@ public:
 
 private:
     constexpr float pi() { return (2 * std::asin(1.0)); }
+    const float e = 0.000001; // convergence tolerance
+    const float tau = 0.5f; // volatility change constrain, reasonable range: 0.3 - 1.2
 
-    float u(float r);
-    float phi(float RD);
-    float g(float phi);
-    float E(float u, float u_j, float phi_j);
-    float v(float u, float u_j, float phi_j);
-    float delta(float u, float u_j, float phi_j, float score);
+    float _u(float r);
+    float _phi(float RD);
+    float _g(float phi);
+    float _E(float u, float u_j, float phi_j);
+    float _v(float u, float u_j, float phi_j);
+    float _delta(float u, float u_j, float phi_j, float score);
+    float _a(float sigma);
+    float _f(float x, float delta, float phi, float v, float tau, float a);
 };
 
 #endif // __Glicko2_H
