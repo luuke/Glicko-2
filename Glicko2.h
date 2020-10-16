@@ -25,8 +25,8 @@ public:
     float CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores);
 
 private:
-    constexpr float pi() { return (2 * std::asin(1.0)); }
-    const float e = 0.000001; // convergence tolerance
+    const float pi = 2 * std::asin(1.0f);
+    const float e = 0.000001f; // convergence tolerance
     const float tau = 0.5f; // volatility change constrain, reasonable range: 0.3 - 1.2
 
     Glicko2Rating player;

@@ -48,12 +48,12 @@ float Glicko2::_phi(float RD)
 
 float Glicko2::_g(float phi)
 {
-    return (1 / sqrt(1 + ((3 * powf(phi, 2)) / (powf(pi(), 2)))));
+    return (1 / sqrt(1 + ((3 * powf(phi, 2)) / (powf(pi, 2)))));
 }
 
 float Glicko2::_E(float u, float u_j, float phi_j)
 {
-    return (1 / (1 + expf(-1 * g(phi_j) * (u - u_j))));
+    return (1 / (1 + expf(-1 * _g(phi_j) * (u - u_j))));
 }
 
 float Glicko2::_v(float u, float u_j, float phi_j)
