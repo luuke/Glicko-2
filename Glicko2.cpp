@@ -9,6 +9,9 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponen
 
     // Step 3: Compute quantity v
     float tmp_v = v(player.u, opponent.u, opponent.phi);
+
+    // Step 4: Compute quantity delta
+    float tmp_delta = delta(player.u, opponent.u, opponent.phi, playerScore);
 }
 
 float Glicko2::u(float r)
@@ -37,4 +40,13 @@ float Glicko2::v(float u, float u_j, float phi_j)
     float tmp_E = E(u, u_j, phi_j);
 
     return powf((powf(tmp_g, 2)* tmp_E* (1 - tmp_E)), -1);
+}
+
+float Glicko2::delta(float u, float u_j, float phi_j, float score)
+{
+    float tmp_v = v(u, u_j, phi_j);
+    float tmp_g = g(phi_j);
+    float tmp_E = E(u, u_j, phi_j);
+
+    return tmp_v * tmp_g * (score - tmp_E);
 }

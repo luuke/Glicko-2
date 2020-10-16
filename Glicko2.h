@@ -13,6 +13,13 @@ class Glicko2
     };
 
 public:
+    enum class Score
+    {
+        Win,
+        Draw,
+        Loss
+    };
+
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
 
 private:
@@ -23,6 +30,7 @@ private:
     float g(float phi);
     float E(float u, float u_j, float phi_j);
     float v(float u, float u_j, float phi_j);
+    float delta(float u, float u_j, float phi_j, float score);
 };
 
 #endif // __Glicko2_H
