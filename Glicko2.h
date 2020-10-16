@@ -22,7 +22,7 @@ public:
     };
 
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
-    void CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores);
+    float CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores);
 
 private:
     constexpr float pi() { return (2 * std::asin(1.0)); }

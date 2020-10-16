@@ -18,7 +18,7 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponen
 
 }
 
-void Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores)
+float Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores)
 {
     // Step 0: Clear all variables or create new Glicko-2 object???
 
@@ -32,6 +32,8 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRati
         opponent.sigma = rating.m_Volatility;
         opponents.push_back(opponent);
     }
+
+    return 0.0f;
 }
 
 float Glicko2::_u(float r)
