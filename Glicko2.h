@@ -1,6 +1,7 @@
 #ifndef __Glicko2_H
 #define __Glicko2_H
 
+#include <list>
 #include "GlickoRating.h"
 
 class Glicko2
@@ -21,11 +22,15 @@ public:
     };
 
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
+    void CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores);
 
 private:
     constexpr float pi() { return (2 * std::asin(1.0)); }
     const float e = 0.000001; // convergence tolerance
     const float tau = 0.5f; // volatility change constrain, reasonable range: 0.3 - 1.2
+
+    Glicko2Rating player;
+    std::list<Glicko2Rating> opponents; 
 
     float _u(float r);
     float _phi(float RD);

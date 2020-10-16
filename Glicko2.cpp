@@ -1,4 +1,5 @@
 #include <cmath>
+#include <list>
 #include "Glicko2.h"
 
 void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore)
@@ -15,6 +16,22 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponen
 
     // Step 5: Determine new volatility value, sigma'
 
+}
+
+void Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores)
+{
+    // Step 0: Clear all variables or create new Glicko-2 object???
+
+    // Step 1/2: Determine player rating and convert to Glicko-2 scale 
+    Glicko2Rating player{ _u(playerRating.m_Rating), _phi(playerRating.m_Deviation), playerRating.m_Volatility };
+    Glicko2Rating opponent;
+    for (auto rating : opponentRatings)
+    {
+        opponent.u = _u(rating.m_Rating);
+        opponent.phi = _phi(rating.m_Deviation);
+        opponent.sigma = rating.m_Volatility;
+        opponents.push_back(opponent);
+    }
 }
 
 float Glicko2::_u(float r)
