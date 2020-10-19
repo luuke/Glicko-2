@@ -30,6 +30,7 @@ private:
     const float tau = 0.5f; // volatility change constrain, reasonable range: 0.3 - 1.2
 
     float v; // quantity v
+    float delta; // quantity delta
 
     Glicko2Rating player;
     std::vector<Glicko2Rating> opponents; 

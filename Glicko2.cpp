@@ -43,6 +43,14 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoR
     }
     v = 1 / tmpSum;
 
+    // Step 4: Compute quantity delta
+    tmpSum = 0.0f;
+    for (size_t i = 0; i < opponents.size(); i++)
+    {
+        tmpSum += (_g(opponents[i].phi) * (scores[i] - _E(player.u, opponents[i].u, opponents[i].phi)));
+    }
+    delta = v * tmpSum;
+
 
 
     return 0.0f;
