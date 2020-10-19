@@ -1,5 +1,5 @@
 #include <cmath>
-#include <list>
+#include <vector>
 #include "Glicko2.h"
 
 void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore)
@@ -18,7 +18,7 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponen
 
 }
 
-float Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores)
+float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores)
 {
     // Step 0: Clear all variables or create new Glicko-2 object???
 

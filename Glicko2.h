@@ -1,7 +1,7 @@
 #ifndef __Glicko2_H
 #define __Glicko2_H
 
-#include <list>
+#include <vector>
 #include "GlickoRating.h"
 
 class Glicko2
@@ -22,7 +22,7 @@ public:
     };
 
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
-    float CalculateNewRating(GlickoRating playerRating, std::list<GlickoRating> opponentRatings, std::list<float> scores);
+    float CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores);
 
 private:
     const float pi = 2 * std::asin(1.0f);
@@ -32,7 +32,7 @@ private:
     float v; // quantity v
 
     Glicko2Rating player;
-    std::list<Glicko2Rating> opponents; 
+    std::vector<Glicko2Rating> opponents; 
 
     float _u(float r);
     float _phi(float RD);
