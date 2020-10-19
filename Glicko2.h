@@ -29,6 +29,8 @@ private:
     const float e = 0.000001f; // convergence tolerance
     const float tau = 0.5f; // volatility change constrain, reasonable range: 0.3 - 1.2
 
+    float v; // quantity v
+
     Glicko2Rating player;
     std::list<Glicko2Rating> opponents; 
 

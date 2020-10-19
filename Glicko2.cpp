@@ -33,6 +33,18 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::list<GlickoRat
         opponents.push_back(opponent);
     }
 
+    // Step 3: Compute quantity v
+    float tmpSum = 0.0f;
+    float tmp_E;
+    for (auto o : opponents)
+    {
+        tmp_E = _E(player.u, o.u, o.phi);
+        tmpSum += (powf(_g(o.phi), 2) * tmp_E * (1 - tmp_E));
+    }
+    v = 1 / tmpSum;
+
+
+
     return 0.0f;
 }
 
