@@ -23,7 +23,10 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoR
     // Step 0: Clear all variables or create new Glicko-2 object???
 
     // Step 1/2: Determine player rating and convert to Glicko-2 scale 
-    Glicko2Rating player{ _u(playerRating.m_Rating), _phi(playerRating.m_Deviation), playerRating.m_Volatility };
+    player.u = _u(playerRating.m_Rating);
+    player.phi = _phi(playerRating.m_Deviation);
+    player.sigma = playerRating.m_Volatility;
+
     Glicko2Rating opponent;
     for (auto rating : opponentRatings)
     {
