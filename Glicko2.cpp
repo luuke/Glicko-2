@@ -18,7 +18,7 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, GlickoRating opponen
 
 }
 
-float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores)
+void Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores)
 {
     // Step 0: Clear all variables or create new Glicko-2 object???
 
@@ -96,22 +96,21 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoR
         f_B = f_C;
     }
 
-    sigma_prime = exp(A / 2);
+    //sigma_prime = exp(A / 2);
+    player_prime.sigma = exp(A / 2); 
 
     // Step 6: Update rating deviation to new pre-rating period value, phi*
-    sigma_new = sqrt(powf(player.phi, 2) + powf(sigma_prime, 2));
+    sigma_new = sqrt(powf(player.phi, 2) + powf(player_prime.sigma, 2));
 
     // Step 7: Update rating and deviation to new values, u' and phi'
-    phi_prime = 1 / sqrt((1 / powf(sigma_new, 2)) + (1 / v));
+    player_prime.phi = 1 / sqrt((1 / powf(sigma_new, 2)) + (1 / v));
 
     tmpSum = 0.0f;
     for (size_t i = 0; i < opponents.size(); i++)
     {
         tmpSum += (_g(opponents[i].phi) * (scores[i] - _E(player.u, opponents[i].u, opponents[i].phi)));
     }
-    u_prime = player.u + powf(phi_prime, 2) * tmpSum;
-
-    return 0.0f;
+    player_prime.u = player.u + powf(player_prime.phi, 2) * tmpSum;
 }
 
 float Glicko2::_u(float r)

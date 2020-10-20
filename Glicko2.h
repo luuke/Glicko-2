@@ -22,7 +22,7 @@ public:
     };
 
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
-    float CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores);
+    void CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores);
 
 private:
     const float pi = 2 * std::asin(1.0f);
@@ -32,12 +32,13 @@ private:
     float v; // quantity v
     float delta; // quantity delta
     float a;
-    float sigma_prime;
     float sigma_new;
-    float u_prime;
-    float phi_prime;
+    //float sigma_prime;
+    //float u_prime;
+    //float phi_prime;
 
     Glicko2Rating player;
+    Glicko2Rating player_prime;
     std::vector<Glicko2Rating> opponents; 
 
     float _u(float r);
