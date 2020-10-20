@@ -43,6 +43,8 @@ private:
 
     float _u(float r);
     float _phi(float RD);
+    float _r(float u);
+    float _RD(float phi);
     float _g(float phi);
     float _E(float u, float u_j, float phi_j);
     float _v(float u, float u_j, float phi_j);

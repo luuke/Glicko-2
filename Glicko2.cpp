@@ -123,6 +123,16 @@ float Glicko2::_phi(float RD)
     return RD / 173.7178f;
 }
 
+float Glicko2::_r(float u)
+{
+    return 173.7178 * u + 1500.0f;
+}
+
+float Glicko2::_RD(float phi)
+{
+    return 173.7178 * phi;
+}
+
 float Glicko2::_g(float phi)
 {
     return (1 / sqrt(1 + ((3 * powf(phi, 2)) / (powf(pi, 2)))));
