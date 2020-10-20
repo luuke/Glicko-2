@@ -54,6 +54,49 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoR
     }
     delta = v * tmpSum;
 
+    // Step 5: Determine new volatility value, sigma'
+    a = _a(player.sigma);
+    float A = a;
+    float B;
+    if (powf(delta, 2) > (powf(player.sigma, 2) + v)) // delta^2 > sigma^2 + v
+    {
+        B = log(powf(delta, 2) - powf(player.phi, 2) - v);
+    }
+    else // delta^2 <= phi^2 + v
+    {
+        int k = 1;
+        while (_f(a - k * tau) < 0)
+        {
+            k++;
+        }
+        B = a - k * tau;
+    }
+
+    float f_A = _f(A);
+    float f_B = _f(B);
+
+    float C;
+    float f_C;
+    while (abs(B - A) > e)
+    {
+        C = A + (A - B) * f_A / (f_B - f_A);
+        f_C = _f(C);
+
+        if ((f_C * f_B) < 0)
+        {
+            A = B;
+            f_A = f_B;
+        }
+        else
+        {
+            f_A = f_A / 2;
+        }
+
+        B = C;
+        f_B = f_C;
+    }
+
+    sigma_prime = exp(A / 2);
 
 
     return 0.0f;
@@ -101,10 +144,10 @@ float Glicko2::_a(float sigma)
     return log(powf(sigma, 2));
 }
 
-float Glicko2::_f(float x, float delta, float phi, float v, float tau, float a)
+float Glicko2::_f(float x)
 {
-    float A = exp(x) * (powf(delta, 2) - powf(phi, 2) - v - exp(x));
-    float B = 2 * powf((powf(phi, 2) + v + exp(x)), 2);
+    float A = exp(x) * (powf(delta, 2) - powf(player.phi, 2) - v - exp(x));
+    float B = 2 * powf((powf(player.phi, 2) + v + exp(x)), 2);
     float C = x - a;
     float D = powf(tau, 2);
 

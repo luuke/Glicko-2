@@ -31,6 +31,8 @@ private:
 
     float v; // quantity v
     float delta; // quantity delta
+    float a;
+    float sigma_prime;
 
     Glicko2Rating player;
     std::vector<Glicko2Rating> opponents; 
@@ -42,7 +44,7 @@ private:
     float _v(float u, float u_j, float phi_j);
     float _delta(float u, float u_j, float phi_j, float score);
     float _a(float sigma);
-    float _f(float x, float delta, float phi, float v, float tau, float a);
+    float _f(float x);
 };
 
 #endif // __Glicko2_H
