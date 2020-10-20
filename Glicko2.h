@@ -23,6 +23,7 @@ public:
 
     void CalculateNewRating(GlickoRating playerRating, GlickoRating opponentRating, float playerScore);
     void CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRating> opponentRatings, std::vector<float> scores);
+    void GetNewRating(GlickoRating& playerRating);
 
 private:
     const float pi = 2 * std::asin(1.0f);

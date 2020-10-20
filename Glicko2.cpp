@@ -113,6 +113,13 @@ void Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoRa
     player_prime.u = player.u + powf(player_prime.phi, 2) * tmpSum;
 }
 
+void Glicko2::GetNewRating(GlickoRating& playerRating)
+{
+    playerRating.m_Rating = _r(player_prime.u);
+    playerRating.m_Deviation = _RD(player_prime.phi);
+    playerRating.m_Volatility = player_prime.sigma;
+}
+
 float Glicko2::_u(float r)
 {
     return (r - 1500.0f) / 173.7178f;
