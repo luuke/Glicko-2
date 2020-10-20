@@ -98,6 +98,9 @@ float Glicko2::CalculateNewRating(GlickoRating playerRating, std::vector<GlickoR
 
     sigma_prime = exp(A / 2);
 
+    // Step 6: Update rating deviation to the new pre-rating period value, phi*
+    float sigma_new = sqrt(powf(player.phi, 2) + powf(sigma_prime, 2));
+
 
     return 0.0f;
 }
